@@ -22,7 +22,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
     <div id="app" class="wrapper">
 
-        <div class="content-wrapper">
+        <div>
             @yield('content')
         </div>
 
