@@ -30,9 +30,15 @@ class EmpresaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $tipo = $request->tipo;
+
+        if ($tipo !== 'cliente' && $tipo !== 'fornecedor') {
+            return \abort(404);
+        }
+
+        return view('empresa.create', \compact('tipo'));
     }
 
     /**
@@ -43,7 +49,7 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

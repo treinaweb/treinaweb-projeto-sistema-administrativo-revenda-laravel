@@ -6,7 +6,7 @@
 
 @section('breadcrumb')
     <li class="breadcrumb-item">
-        <a href="{{ route('empresas.index') }}">Listagem de {{ $tipo }}</a>
+        <a href="{{ route('empresas.index') }}?tipo={{ $tipo }}">Listagem de {{ $tipo }}</a>
     </li>
 @endsection
 
@@ -18,7 +18,7 @@
                 <div class="card-header">
                     <h3 class="card-title">Listagem de {{ $tipo }}</h3>
                     <div class="card-tools">
-                        <a href="" class="btn btn-success">Novo {{ $tipo }}</a>
+                        <a href="{{ route('empresas.create') }}?tipo={{ $tipo }}" class="btn btn-success">Novo {{ $tipo }}</a>
                     </div>
                 </div>
 
