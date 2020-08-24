@@ -56,7 +56,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../index2.html" class="nav-link">
+                <a href="{{ route('empresas.index') }}?tipo=fornecedor" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Lista de Fornecedores</p>
                 </a>
@@ -80,7 +80,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../index2.html" class="nav-link">
+                <a href="{{ route('empresas.index') }}?tipo=cliente" class="nav-link">
                   <i class="fas fa-list-alt nav-icon"></i>
                   <p>Lista de Clientes</p>
                 </a>

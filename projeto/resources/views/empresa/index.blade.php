@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('title')
-    <h1>Listagem</h1>
+    <h1>Listagem de {{ $tipo }}</h1>
 @endsection
 
 @section('breadcrumb')
     <li class="breadcrumb-item">
-        <a href="{{ route('empresas.index') }}">Listagem</a>
+        <a href="{{ route('empresas.index') }}">Listagem de {{ $tipo }}</a>
     </li>
 @endsection
 
@@ -16,9 +16,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Listagem</h3>
+                    <h3 class="card-title">Listagem de {{ $tipo }}</h3>
                     <div class="card-tools">
-                        <a href="" class="btn btn-success">Novo</a>
+                        <a href="" class="btn btn-success">Novo {{ $tipo }}</a>
                     </div>
                 </div>
 
@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="card-footer clearfix">
-                    {{ $empresas->links() }}
+                    {{ $empresas->appends(['tipo' => request('tipo')])->links() }}
               </div>
             </div>
         </div>
