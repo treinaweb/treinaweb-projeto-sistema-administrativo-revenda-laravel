@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empresa;
 use Illuminate\Http\Request;
 
 class EmpresaController extends Controller
@@ -13,7 +14,9 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        return view('empresa.index');
+        $empresas = Empresa::paginate(1);
+
+        return view('empresa.index', \compact('empresas'));
     }
 
     /**
