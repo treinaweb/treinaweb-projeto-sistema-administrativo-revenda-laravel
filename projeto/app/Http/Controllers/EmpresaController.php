@@ -72,9 +72,9 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Empresa $empresa)
     {
-        //
+        return view('empresa.edit', \compact('empresa'));
     }
 
     /**
