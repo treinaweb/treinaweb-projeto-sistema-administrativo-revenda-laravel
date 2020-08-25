@@ -51,7 +51,7 @@
 <div class="form-group row">
     <label class="col-form-label col-sm-2 required" for="celular">Celular*</label>
     <div class="col-sm-10">
-        <input type="text" id="celular" name="celular" required="required" maxlength="15" class="phone form-control @error('celular') is-invalid @enderror">
+        <input type="text" id="celular" name="celular" required="required" maxlength="15" class="celular form-control @error('celular') is-invalid @enderror">
         @error('celular')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
