@@ -69,8 +69,8 @@ class EmpresaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Empresa $empresa
+     * @return void
      */
     public function edit(Empresa $empresa)
     {
@@ -80,13 +80,15 @@ class EmpresaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param EmpresaRequest $request
+     * @param Empresa $empresa
+     * @return void
      */
-    public function update(Request $request, $id)
+    public function update(EmpresaRequest $request, Empresa $empresa)
     {
-        //
+        $empresa->update($request->all());
+
+        return \redirect()->route('empresas.show', $empresa);
     }
 
     /**
