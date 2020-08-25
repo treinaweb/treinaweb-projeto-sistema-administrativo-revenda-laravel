@@ -26,24 +26,34 @@
 
         <div class="content-wrapper">
 
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                <div class="col-sm-6">
-                    @yield('title')
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('home') }}">Dashboard</a>
-                        </li>
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                    <div class="col-sm-6">
+                        @yield('title')
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item">
+                                <a href="{{ route('home') }}">Dashboard</a>
+                            </li>
 
-                        @yield('breadcrumb')
-                    </ol>
+                            @yield('breadcrumb')
+                        </ol>
+                    </div>
+                    </div>
                 </div>
+            </section> 
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-            </div>
-        </section>       
+            @endif      
 
             @yield('content')
         </div>

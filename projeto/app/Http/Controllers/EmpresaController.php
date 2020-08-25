@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Empresa;
 use Illuminate\Http\Request;
+use App\Http\Requests\EmpresaRequest;
 
 class EmpresaController extends Controller
 {
@@ -47,11 +48,11 @@ class EmpresaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmpresaRequest $request)
     {
         $empresa = Empresa::create($request->all());
 
-        dd($empresa);
+        return \redirect()->route('empresas.show', $empresa->id);
     }
 
     /**
@@ -62,7 +63,7 @@ class EmpresaController extends Controller
      */
     public function show($id)
     {
-        //
+        return 'estou no show';
     }
 
     /**
