@@ -28,7 +28,7 @@ class EmpresaRequest extends FormRequest
             'tipo' => ['required', Rule::in(['cliente', 'fornecedor'])],
             'nome' => ['required', 'max:255'],
             'razao_social' => ['max:255'],
-            'documento' => ['required'],
+            'documento' => $this->tipoValidacaoDocumento(),
             'nome_contato' => ['required', 'max:255'],
             'celular' => ['required', 'size:11'],
             'email' => ['required', 'email'],
@@ -39,5 +39,38 @@ class EmpresaRequest extends FormRequest
             'cidade' => ['required', 'max:50'],
             'estado' => ['required', 'size:2']
         ];
+    }
+
+    /**
+     * Limpar os valores
+     *
+     * @return void
+     */
+    public function validationData()
+    {
+        $campos = $this->all();
+
+        $campos['documento'] = \str_replace(['.', '-', '/'], '', $campos['documento']);
+        $campos['celular'] = \str_replace([' ', '(', ')', '-'], '', $campos['celular']);
+        $campos['telefone'] = \str_replace([' ', '(', ')', '-'], '', $campos['telefone']);
+        $campos['cep'] = \str_replace('-', '', $campos['cep']);
+
+        $this->replace($campos);
+
+        return $campos;
+    }
+
+    /**
+     * Retorna o tipo de validação baseado no tamanho do campo de doc
+     *
+     * @return void
+     */
+    private function tipoValidacaoDocumento()
+    {
+        if (\strlen($this->documento) === 11) {
+            return ['required', 'cpf'];
+        }
+
+        return ['required', 'cnpj'];
     }
 }
