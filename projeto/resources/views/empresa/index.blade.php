@@ -34,7 +34,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($empresas as $empresa)
+                            @forelse($empresas as $empresa)
                                 <tr>
                                     <td>{{ $empresa->id }}</td>
                                     <td>{{ $empresa->nome }}</td>
@@ -44,9 +44,16 @@
                                         <a href="{{ route('empresas.show', $empresa) }}" class="btn btn-primary">Detalhes</a>
                                         <a href="{{ route('empresas.edit', $empresa) }}" class="btn btn-danger">Atualizar</a>
                                     </td>
-                                    
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Nenhum registro cadastrado</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

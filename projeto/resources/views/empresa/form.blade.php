@@ -3,7 +3,7 @@
 <div class="form-group row">
     <label for="nome" class="col-form-label col-sm-2 required">Nome*</label>
     <div class="col-sm-10">
-        <input value="{{ old('nome', @$empresa->nome) }}" type="text" name="nome" maxlength="255" class="form-control @error('nome') is-invalid @enderror">
+        <input value="{{ old('nome', @$empresa->nome) }}" type="text" name="nome" required="required" maxlength="255" class="form-control @error('nome') is-invalid @enderror">
     
         @error('nome')
             <div class="alert alert-danger">{{ $message }}</div>
@@ -58,7 +58,7 @@
 <div class="form-group row">
     <label class="col-form-label col-sm-2" for="email">Email*</label>
     <div class="col-sm-10">
-        <input value="{{ old('email', @$empresa->email) }}" type="text" id="email" name="email" maxlength="100" class="form-control @error('email') is-invalid @enderror">
+        <input value="{{ old('email', @$empresa->email) }}" type="email" id="email" name="email" required="required" maxlength="100" class="form-control @error('email') is-invalid @enderror">
         @error('email')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -77,7 +77,7 @@
 <div class="form-group row">
     <label class="col-form-label col-sm-2" for="cep">Cep*</label>
     <div class="col-sm-10">
-        <input value="{{ old('cep', @$empresa->cep) }}" type="text" id="cep" name="cep" maxlength="9" class="cep form-control @error('cep') is-invalid @enderror">
+        <input value="{{ old('cep', @$empresa->cep) }}" type="text" id="cep" name="cep" required="required" maxlength="9" class="cep form-control @error('cep') is-invalid @enderror">
         @error('cep')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -86,7 +86,7 @@
 <div class="form-group row">
     <label class="col-form-label col-sm-2" for="logradouro">Logradouro*</label>
     <div class="col-sm-10">
-        <input value="{{ old('logradouro', @$empresa->logradouro) }}" type="text" id="logradouro" name="logradouro" maxlength="150" class="form-control @error('logradouro') is-invalid @enderror">
+        <input value="{{ old('logradouro', @$empresa->logradouro) }}" type="text" id="logradouro" name="logradouro" required="required" maxlength="150" class="form-control @error('logradouro') is-invalid @enderror">
         @error('logradouro')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -95,7 +95,7 @@
 <div class="form-group row">
     <label class="col-form-label col-sm-2" for="bairro">Bairro*</label>
     <div class="col-sm-10">
-        <input value="{{ old('bairro', @$empresa->bairro) }}" type="text" id="bairro" name="bairro" maxlength="100" class="form-control @error('bairro') is-invalid @enderror">
+        <input value="{{ old('bairro', @$empresa->bairro) }}" type="text" id="bairro" name="bairro" required="required" maxlength="100" class="form-control @error('bairro') is-invalid @enderror">
         @error('bairro')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -104,7 +104,7 @@
 <div class="form-group row">
     <label class="col-form-label col-sm-2" for="cidade">Cidade*</label>
     <div class="col-sm-10">
-        <input value="{{ old('cidade', @$empresa->cidade) }}" type="text" id="cidade" name="cidade" maxlength="100" class="form-control @error('cidade') is-invalid @enderror">
+        <input value="{{ old('cidade', @$empresa->cidade) }}" type="text" id="cidade" name="cidade" required="required" maxlength="100" class="form-control @error('cidade') is-invalid @enderror">
         @error('cidade')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -113,7 +113,7 @@
 <div class="form-group row">
     <label class="col-form-label col-sm-2" for="estado">Estado*</label>
     <div class="col-sm-10">
-        <input value="{{ old('estado', @$empresa->estado) }}" type="text" id="estado" name="estado" maxlength="2" class="form-control @error('estado') is-invalid @enderror">
+        <input value="{{ old('estado', @$empresa->estado) }}" type="text" id="estado" name="estado" required="required" maxlength="2" class="form-control @error('estado') is-invalid @enderror">
         @error('estado')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
