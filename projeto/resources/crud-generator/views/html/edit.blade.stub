@@ -1,15 +1,27 @@
 @extends('layouts.app')
 
-@section('content')
-    <div class="container">
-        <div class="row">
-            @include('admin.sidebar')
+@section('title')
+    <h1>Editar %%modelName%%</h1>
+@endsection
 
-            <div class="col-md-9">
+@section('breadcrumb')
+    <li class="breadcrumb-item">
+        <a href="{{ url('/%%routeGroup%%%%viewName%%') }}">Listagem %%modelName%%</a>
+    </li>
+
+    <li class="breadcrumb-item">
+        <a href="{{ url('/%%routeGroup%%%%viewName%%/' . $%%crudNameSingular%%->%%primaryKey%% . '/edit') }}">Editar %%modelName%%</a>
+    </li>
+@endsection
+
+@section('content')
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Edit %%modelName%% #{{ $%%crudNameSingular%%->%%primaryKey%% }}</div>
+                    <div class="card-header">Editar %%modelName%% #{{ $%%crudNameSingular%%->%%primaryKey%% }}</div>
                     <div class="card-body">
-                        <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</button></a>
                         <br />
                         <br />
 

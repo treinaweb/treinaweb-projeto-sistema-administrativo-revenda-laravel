@@ -1,22 +1,34 @@
 @extends('layouts.app')
 
-@section('content')
-    <div class="container">
-        <div class="row">
-            @include('admin.sidebar')
+@section('title')
+    <h1>Detalhes %%modelName%%</h1>
+@endsection
 
-            <div class="col-md-9">
+@section('breadcrumb')
+    <li class="breadcrumb-item">
+        <a href="{{ url('/%%routeGroup%%%%viewName%%') }}">Listagem %%modelName%%</a>
+    </li>
+
+    <li class="breadcrumb-item">
+        <a href="{{ url('/%%routeGroup%%%%viewName%%/' . $%%crudNameSingular%%->%%primaryKey%%) }}">Detalhes %%modelName%%</a>
+    </li>
+@endsection
+
+@section('content')
+    <div class="container-fluid
+        <div class="row">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">%%modelName%% {{ $%%crudNameSingular%%->%%primaryKey%% }}</div>
                     <div class="card-body">
 
-                        <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/%%routeGroup%%%%viewName%%/' . $%%crudNameSingular%%->%%primaryKey%% . '/edit') }}" title="Edit %%modelName%%"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                        <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</button></a>
+                        <a href="{{ url('/%%routeGroup%%%%viewName%%/' . $%%crudNameSingular%%->%%primaryKey%% . '/edit') }}" title="Edit %%modelName%%"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
 
                         <form method="POST" action="{{ url('%%routeGroup%%%%crudName%%' . '/' . $%%crudNameSingular%%->%%primaryKey%%) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
-                            <button type="submit" class="btn btn-danger btn-sm" title="Delete %%modelName%%" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                            <button type="submit" class="btn btn-danger btn-sm" title="Apagar %%modelName%%" onclick="return confirm(&quot;Tem certeza que deseja apagar?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Apagar</button>
                         </form>
                         <br/>
                         <br/>
