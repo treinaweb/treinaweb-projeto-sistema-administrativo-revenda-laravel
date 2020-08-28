@@ -26,3 +26,5 @@ Route::middleware('auth')->group(function() {
     Route::resource('users', 'UsersController');
 });
 
+
+Route::resource('movimentos_financeiros', 'Movimentos_financeirosController');
