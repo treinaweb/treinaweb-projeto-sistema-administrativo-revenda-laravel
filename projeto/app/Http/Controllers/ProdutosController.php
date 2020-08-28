@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
-use App\Produto;
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class ProdutosController extends Controller
@@ -112,13 +112,12 @@ class ProdutosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @param Produto $produto
+     * @return void
      */
-    public function destroy($id)
+    public function destroy(Produto $produto)
     {
-        Produto::destroy($id);
+        $produto->delete();
 
         return redirect('produtos')->with('flash_message', 'Produto deleted!');
     }
