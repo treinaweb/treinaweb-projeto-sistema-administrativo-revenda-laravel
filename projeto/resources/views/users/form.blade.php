@@ -11,10 +11,17 @@
         {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group row {{ $errors->has('password') ? 'has-error' : ''}}">
-    <label for="password" class="col-form-label col-sm-2">{{ 'Password' }}</label>
+    <label for="password" class="col-form-label col-sm-2">Senha</label>
     <div class="col-sm-10">
-        <input class="form-control" name="password" type="text" id="password" value="" required>
+        <input class="form-control" name="password" type="password" id="password" value="" required>
         {!! $errors->first('password', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+<div class="form-group row">
+    <label for="password-confirm" class="col-sm-2 col-form-label">Confirme a Senha</label>
+
+    <div class="col-sm-10">
+        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
     </div>
 </div>
 
