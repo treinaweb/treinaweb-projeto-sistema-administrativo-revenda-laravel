@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
-use App\Models\Produto;
+use App\User;
 use Illuminate\Http\Request;
 
-class ProdutosController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,14 +21,15 @@ class ProdutosController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $produtos = Produto::where('nome', 'LIKE', "%$keyword%")
-                ->orWhere('descricao', 'LIKE', "%$keyword%")
+            $users = User::where('name', 'LIKE', "%$keyword%")
+                ->orWhere('email', 'LIKE', "%$keyword%")
+                ->orWhere('password', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $produtos = Produto::latest()->paginate($perPage);
+            $users = User::latest()->paginate($perPage);
         }
 
-        return view('produtos.index', compact('produtos'));
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -38,7 +39,7 @@ class ProdutosController extends Controller
      */
     public function create()
     {
-        return view('produtos.create');
+        return view('users.create');
     }
 
     /**
@@ -51,13 +52,15 @@ class ProdutosController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-			'nome' => 'required|max:255'
+			'name' => 'required|string|max:255',
+			'email' => 'required|string|email|max:255|unique:users',
+			'password' => 'required|string|min:8|confirmed'
 		]);
         $requestData = $request->all();
         
-        Produto::create($requestData);
+        User::create($requestData);
 
-        return redirect('produtos')->with('flash_message', 'Produto added!');
+        return redirect('users')->with('flash_message', 'User added!');
     }
 
     /**
@@ -69,9 +72,9 @@ class ProdutosController extends Controller
      */
     public function show($id)
     {
-        $produto = Produto::findOrFail($id);
+        $user = User::findOrFail($id);
 
-        return view('produtos.show', compact('produto'));
+        return view('users.show', compact('user'));
     }
 
     /**
@@ -83,9 +86,9 @@ class ProdutosController extends Controller
      */
     public function edit($id)
     {
-        $produto = Produto::findOrFail($id);
+        $user = User::findOrFail($id);
 
-        return view('produtos.edit', compact('produto'));
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -99,26 +102,29 @@ class ProdutosController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-			'nome' => 'required|max:255'
+			'name' => 'required|string|max:255',
+			'email' => 'required|string|email|max:255|unique:users',
+			'password' => 'required|string|min:8|confirmed'
 		]);
         $requestData = $request->all();
         
-        $produto = Produto::findOrFail($id);
-        $produto->update($requestData);
+        $user = User::findOrFail($id);
+        $user->update($requestData);
 
-        return redirect('produtos')->with('flash_message', 'Produto updated!');
+        return redirect('users')->with('flash_message', 'User updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Produto $produto
-     * @return void
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy(Produto $produto)
+    public function destroy($id)
     {
-        $produto->delete();
+        User::destroy($id);
 
-        return redirect('produtos')->with('flash_message', 'Produto deleted!');
+        return redirect('users')->with('flash_message', 'User deleted!');
     }
 }
