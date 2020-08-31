@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('title')
-    <h1>Listagem Movimentos_financeiro</h1>
+    <h1>Listagem Movimentos Financeiros</h1>
 @endsection
 
 @section('breadcrumb')
     <li class="breadcrumb-item">
-        <a href="{{ url('/movimentos_financeiros') }}">Listagem Movimentos_financeiro</a>
+        <a href="{{ url('/movimentos_financeiros') }}">Listagem Movimentos Financeiros</a>
     </li>
 @endsection
 
@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Movimentos_financeiros</div>
+                    <div class="card-header">Movimentos Financeiros</div>
                     <div class="card-body">
                         <a href="{{ url('/movimentos_financeiros/create') }}" class="btn btn-success btn-sm" title="Novo Movimentos_financeiro">
                             <i class="fa fa-plus" aria-hidden="true"></i> Novo

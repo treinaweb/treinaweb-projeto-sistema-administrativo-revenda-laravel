@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
-use App\Movimentos_financeiro;
+use App\Models\Movimentos_financeiro;
 use Illuminate\Http\Request;
 
-class Movimentos_financeirosController extends Controller
+class MovimentoFinanceiroController extends Controller
 {
     /**
      * Display a listing of the resource.

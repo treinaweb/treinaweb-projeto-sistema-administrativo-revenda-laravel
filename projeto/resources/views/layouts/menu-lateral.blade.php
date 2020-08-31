@@ -98,13 +98,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../index.html" class="nav-link">
+                <a href="{{ route('movimentos_financeiros.create') }}" class="nav-link">
                   <i class="fas fa-dollar-sign nav-icon"></i>
                   <p>Novo Lançamento</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../index2.html" class="nav-link">
+                <a href="{{ route('movimentos_financeiros.index') }}" class="nav-link">
                   <i class="fas fa-chart-pie nav-icon"></i>
                   <p>Relatório Financeiro</p>
                 </a>
