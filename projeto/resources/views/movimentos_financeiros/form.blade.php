@@ -4,16 +4,18 @@
         <input class="form-control" name="descricao" type="text" id="descricao" value="{{ isset($movimentos_financeiro->descricao) ? $movimentos_financeiro->descricao : ''}}" required>
         {!! $errors->first('descricao', '<p class="help-block">:message</p>') !!}
     </div>
-</div><div class="form-group row {{ $errors->has('valor') ? 'has-error' : ''}}">
+</div>
+<div class="form-group row {{ $errors->has('valor') ? 'has-error' : ''}}">
     <label for="valor" class="col-form-label col-sm-2">{{ 'Valor' }}</label>
     <div class="col-sm-10">
-        <input class="form-control" name="valor" type="number" id="valor" value="{{ isset($movimentos_financeiro->valor) ? $movimentos_financeiro->valor : ''}}" >
+        <input class="form-control money" name="valor" type="text" id="valor" value="{{ isset($movimentos_financeiro->valor) ? $movimentos_financeiro->valor : ''}}" >
         {!! $errors->first('valor', '<p class="help-block">:message</p>') !!}
     </div>
-</div><div class="form-group row {{ $errors->has('data') ? 'has-error' : ''}}">
+</div>
+<div class="form-group row {{ $errors->has('data') ? 'has-error' : ''}}">
     <label for="data" class="col-form-label col-sm-2">{{ 'Data' }}</label>
     <div class="col-sm-10">
-        <input class="form-control" name="data" type="date" id="data" value="{{ isset($movimentos_financeiro->data) ? $movimentos_financeiro->data : ''}}" required>
+        <input class="form-control date" name="data" type="text" id="data" value="{{ isset($movimentos_financeiro->data) ? $movimentos_financeiro->data : ''}}" required>
         {!! $errors->first('data', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group row {{ $errors->has('tipo') ? 'has-error' : ''}}">

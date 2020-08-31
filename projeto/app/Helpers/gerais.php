@@ -54,3 +54,11 @@ if (! function_exists('estados')) {
         ];
     }
 }
+
+if (! function_exists('data_br_para_iso')) {
+    function data_br_para_iso($data)
+    {
+        return \DateTime::createFromFormat('d/m/Y', $data)
+                            ->format('Y-m-d');
+    }
+}
