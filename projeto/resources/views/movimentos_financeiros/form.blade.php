@@ -31,7 +31,7 @@
 </div><div class="form-group row {{ $errors->has('empresa_id') ? 'has-error' : ''}}">
     <label for="empresa_id" class="col-form-label col-sm-2">{{ 'Empresa Id' }}</label>
     <div class="col-sm-10">
-        <input class="form-control" name="empresa_id" type="number" id="empresa_id" value="{{ isset($movimentos_financeiro->empresa_id) ? $movimentos_financeiro->empresa_id : ''}}" required>
+        <select class="form-control" name="empresa_id" id="empresa-ajax" required></select>
         {!! $errors->first('empresa_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
