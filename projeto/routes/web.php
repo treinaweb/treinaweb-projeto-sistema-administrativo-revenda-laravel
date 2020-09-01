@@ -25,6 +25,8 @@ Route::middleware('auth')->group(function() {
     Route::resource('produtos', 'ProdutosController');
     Route::resource('users', 'UsersController');
     Route::resource('movimentos_financeiros', 'MovimentoFinanceiroController');
+    Route::post('/empresas/buscar-por/nome', 'Selects\EmpresaNomeTipo');
+
 });
 
 
