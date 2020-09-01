@@ -17,6 +17,13 @@ class MovimentoFinanceiroController extends Controller
      */
     public function index(Request $request)
     {
+        if (!$request->filled('data_inicial') || !$request->filled('data_final')) {
+            return \redirect()->route('movimentos_financeiros.index', [
+                'data_inicial' => (new \DateTime('first day of this month'))->format('d/m/Y'),
+                'data_final' => (new \DateTime('last day of this month'))->format('d/m/Y'),
+            ]);
+        }
+
         $movimentos_financeiros = Movimentos_financeiro::buscaPorIntervalo(
             data_br_para_iso($request->data_inicial),
             data_br_para_iso($request->data_final)

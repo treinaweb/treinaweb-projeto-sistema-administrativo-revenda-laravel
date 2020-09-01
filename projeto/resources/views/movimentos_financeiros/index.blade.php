@@ -23,7 +23,7 @@
                                     <div class="form-group">
                                         <label class="control-label" for="data_inicial">Data Inicial</label>
                                         <div class="input-group">
-                                            <input id="data_inicio" name="data_inicial" type="text" class="form-control date" value="">
+                                            <input id="data_inicio" name="data_inicial" type="text" class="form-control date" value="{{ request('data_inicial') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -31,7 +31,7 @@
                                     <div class="form-group">
                                         <label class="control-label" for="data_final">Data Final</label>
                                         <div class="input-group">
-                                            <input id="data_final" name="data_final" type="text" class="form-control date" value="">
+                                            <input id="data_final" name="data_final" type="text" class="form-control date" value="{{ request('data_final') }}">
                                         </div>
                                     </div>
                                 </div>
