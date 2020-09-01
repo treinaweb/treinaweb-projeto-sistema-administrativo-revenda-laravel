@@ -17,19 +17,10 @@ class MovimentoFinanceiroController extends Controller
      */
     public function index(Request $request)
     {
-        $keyword = $request->get('search');
-        $perPage = 25;
-
-        if (!empty($keyword)) {
-            $movimentos_financeiros = Movimentos_financeiro::where('descricao', 'LIKE', "%$keyword%")
-                ->orWhere('valor', 'LIKE', "%$keyword%")
-                ->orWhere('data', 'LIKE', "%$keyword%")
-                ->orWhere('tipo', 'LIKE', "%$keyword%")
-                ->orWhere('empresa_id', 'LIKE', "%$keyword%")
-                ->latest()->paginate($perPage);
-        } else {
-            $movimentos_financeiros = Movimentos_financeiro::latest()->paginate($perPage);
-        }
+        $movimentos_financeiros = Movimentos_financeiro::buscaPorIntervalo(
+            data_br_para_iso($request->data_inicial),
+            data_br_para_iso($request->data_final)
+        );
 
         return view('movimentos_financeiros.index', compact('movimentos_financeiros'));
     }
