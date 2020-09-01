@@ -43,6 +43,15 @@ class Empresa extends Model
         return self::where('tipo', $tipo)->paginate($quantidade);
     }
 
+    public static function buscarPorNomeTipo(string $nome, string $tipo)
+    {
+        $nome = '%' . $nome . '%';
+
+        return self::where('nome', 'LIKE', $nome)
+                        ->where('tipo', $tipo)
+                        ->get();
+    }
+
     /**
      * Cria acessor chamado text para serialização
      *

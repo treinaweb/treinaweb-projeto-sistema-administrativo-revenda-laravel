@@ -45245,8 +45245,9 @@ $(document).ready(function () {
       type: 'post',
       data: function data(params) {
         return {
-          nome: params.term // search term
-
+          nome: params.term,
+          // search term
+          tipo: $('#tipo').val()
         };
       },
       headers: {

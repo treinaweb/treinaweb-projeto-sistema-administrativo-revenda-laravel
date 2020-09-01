@@ -16,6 +16,9 @@ class EmpresaNomeTipo extends Controller
      */
     public function __invoke(Request $request)
     {
-        return Empresa::get();
+        $tipo = $request->tipo === 'entrada' ? 'cliente' : 'fornecedor';
+        $nome = $request->nome ?? '';
+
+        return Empresa::buscarPorNomeTipo($nome, $tipo);
     }
 }
