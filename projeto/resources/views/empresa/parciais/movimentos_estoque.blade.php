@@ -22,7 +22,7 @@
                             <td>R$ {{ numero_iso_para_br($movimentoEstoque->valor) }}</td>
                             <td>R$ {{ numero_iso_para_br($movimentoEstoque->quantidade*$movimentoEstoque->valor) }}</td>
                             <td>
-                                <form method="POST" action="{{ url('/' . '/' ) }}" accept-charset="UTF-8" style="display:inline">
+                                <form method="POST" action="{{ route('movimentos_estoque.destroy', $movimentoEstoque) }}" accept-charset="UTF-8" style="display:inline">
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
                                     <button type="submit" class="btn btn-danger btn-sm" title="Apagar Movimento" onclick="return confirm(&quot;Tem certeza que deseja apagar esse movimento?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Apagar</button>
