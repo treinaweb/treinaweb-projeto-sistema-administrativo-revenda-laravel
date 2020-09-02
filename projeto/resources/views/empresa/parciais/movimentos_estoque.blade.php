@@ -1,13 +1,15 @@
 
 <div class="col-md-12">
 <div class="card">
-    <div class="card-header">Últimos Lançamentos</div>
+    <div class="card-header">Últimos Movimentos de Estoque</div>
         <div class="card-body">                    
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
                             <th>Produto</th>
+                            <th>Data</th>
+                            <th>Tipo</th>
                             <th>Quantidade em KG</th>
                             <th>Valor por KG</th>
                             <th>Total</th>
@@ -18,6 +20,8 @@
                         @foreach($empresa->movimentosEstoque as $movimentoEstoque)
                         <tr>
                             <td>{{ $movimentoEstoque->produto->nome }}</td>
+                            <td>{{ data_iso_para_br($movimentoEstoque->create_ai) }}</td>
+                            <td>{{ ucfirst($movimentoEstoque->tipo) }}</td>
                             <td>{{ numero_iso_para_br($movimentoEstoque->quantidade) }}</td>
                             <td>R$ {{ numero_iso_para_br($movimentoEstoque->valor) }}</td>
                             <td>R$ {{ numero_iso_para_br($movimentoEstoque->quantidade*$movimentoEstoque->valor) }}</td>
@@ -38,6 +42,7 @@
                 {{ csrf_field() }}
 
                 <input type="hidden" name="empresa_id" value="{{ $empresa->id }}">
+                <input type="hidden" name="tipo" value="{{ $empresa->tipo === 'fornecedor' ? 'entrada' : 'saida' }}">
 
                 <div class="row">
                     <div class="col-sm-4">

@@ -28,6 +28,8 @@ class MovimentoEstoqueRequest extends FormRequest
             'produto_id' => 'required',
             'quantidade' => 'required|numeric',
             'valor' => 'required|numeric',
+            'tipo'  => ['required', Rule::in(['entrada', 'saida'])],
+            'empresa_id' => 'required'
         ];
     }
 
