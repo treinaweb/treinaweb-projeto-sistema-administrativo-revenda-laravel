@@ -40,7 +40,7 @@
                         <div class="form-group">
                             <label class="control-label" for="produto">Produto</label>
                             <div class="input-group">
-                                <select id="produto-ajax" name="produto" type="text" class="form-control"></select>
+                                <select id="produto-ajax" name="produto" type="text" class="form-control" style="width: 100%"></select>
                             </div>
                         </div>
                     </div>
