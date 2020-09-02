@@ -32,6 +32,16 @@ class Empresa extends Model
     protected $appends = ['text'];
 
     /**
+     * Define a relação com estoque
+     *
+     * @return void
+     */
+    public function movimentosEstoque()
+    {
+        return $this->hasMany('App\Models\MovimentosEstoque');
+    }
+
+    /**
      * retorna empresas por tipo
      *
      * @param string $tipo

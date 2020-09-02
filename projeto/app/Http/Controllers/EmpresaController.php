@@ -61,8 +61,11 @@ class EmpresaController extends Controller
      * @param Empresa $empresa
      * @return View
      */
-    public function show(Empresa $empresa): View
+    public function show(int $id): View
     {
+        $empresa = Empresa::with(['movimentosEstoque', 'movimentosEstoque.produto'])
+                            ->findOrFail($id);
+
         return view('empresa.show', \compact('empresa'));
     }
 
@@ -70,11 +73,7 @@ class EmpresaController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param Empresa $empresa
-<<<<<<< HEAD
      * @return View
-=======
-     * @return void
->>>>>>> 32b165d6fcf3a491fd4cacd9f85c9325126991c7
      */
     public function edit(Empresa $empresa): View
     {
