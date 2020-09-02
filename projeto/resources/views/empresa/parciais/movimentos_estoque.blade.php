@@ -34,13 +34,17 @@
                 </table>
             </div>
             <hr>
-            <form method="GET">
+            <form method="POST" action="{{ route('movimentos_estoque.store') }}">
+                {{ csrf_field() }}
+
+                <input type="hidden" name="empresa_id" value="{{ $empresa->id }}">
+
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="produto">Produto</label>
+                            <label class="control-label" for="produto_id">Produto</label>
                             <div class="input-group">
-                                <select id="produto-ajax" name="produto" type="text" class="form-control" style="width: 100%"></select>
+                                <select id="produto-ajax" name="produto_id" type="text" class="form-control" style="width: 100%"></select>
                             </div>
                         </div>
                     </div>
