@@ -19,4 +19,11 @@ class Saldo extends Model
      * @var array
      */
     protected $fillable = ['valor', 'empresa_id'];
+
+    public static function ultimoDaEmpresa(int $empresaId)
+    {
+        return self::where('empresa_id', $empresaId)
+                    ->latest()
+                    ->first();
+    }
 }
