@@ -23,7 +23,6 @@
                     <div class="card-body">
 
                         <a href="{{ url('/movimentos_financeiros') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</button></a>
-                        <a href="{{ url('/movimentos_financeiros/' . $movimentos_financeiro->id . '/edit') }}" title="Edit Movimentos_financeiro"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
 
                         <form method="POST" action="{{ url('movimentos_financeiros' . '/' . $movimentos_financeiro->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
@@ -58,7 +57,7 @@
                                     </tr>
                                     <tr>
                                         <th> Data </th>
-                                        <td> {{ data_iso_para_br($movimentos_financeiro->data) }} </td>
+                                        <td> {{ data_iso_para_br($movimentos_financeiro->created_at) }} </td>
                                     </tr>
                                     
 

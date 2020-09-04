@@ -17,7 +17,6 @@ class CreateMovimentosFinanceirosTable extends Migration
             
             $table->string('descricao');
             $table->decimal('valor', 10, 2);
-            $table->date('data');
             $table->string('tipo');
             
             $table->bigInteger('empresa_id')->unsigned();

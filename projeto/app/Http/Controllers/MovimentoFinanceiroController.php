@@ -69,37 +69,7 @@ class MovimentoFinanceiroController extends Controller
 
         return view('movimentos_financeiros.show', compact('movimentos_financeiro'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     *
-     * @return \Illuminate\View\View
-     */
-    public function edit($id)
-    {
-        $movimentos_financeiro = MovimentosFinanceiro::findOrFail($id);
-
-        return view('movimentos_financeiros.edit', compact('movimentos_financeiro'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param  int  $id
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function update(MovimentoFinanceiroRequest $request, $id)
-    {      
-        $movimentos_financeiro = MovimentosFinanceiro::findOrFail($id);
-        $movimentos_financeiro->update($request->all());
-
-        return redirect('movimentos_financeiros')->with('flash_message', 'Movimentos_financeiro updated!');
-    }
-
+   
     /**
      * Remove the specified resource from storage.
      *
