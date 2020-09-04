@@ -24,5 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         \App\Models\MovimentosEstoque::observe(\App\Observers\MovimentosEstoqueObserver::class);
+        \App\Models\MovimentosFinanceiro::observe(\App\Observers\MovimentosFinanceiroObserver::class);
+        
     }
 }

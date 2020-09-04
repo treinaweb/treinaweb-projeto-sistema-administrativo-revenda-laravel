@@ -38,6 +38,16 @@ class MovimentosFinanceiro extends Model
     }
 
     /**
+     * Configura a relação com histórico do saldo
+     *
+     * @return void
+     */
+    public function saldo()
+    {
+        return $this->MorphOne('App\Models\Saldo', 'movimento');
+    }
+
+    /**
      * Busca movimentos por intervalo de data
      *
      * @param string $inicio
