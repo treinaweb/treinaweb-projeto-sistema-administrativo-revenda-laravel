@@ -20,6 +20,12 @@ class Saldo extends Model
      */
     protected $fillable = ['valor', 'empresa_id'];
 
+    /**
+     * busca último saldo da empresa
+     *
+     * @param integer $empresaId
+     * @return void
+     */
     public static function ultimoDaEmpresa(int $empresaId)
     {
         return self::where('empresa_id', $empresaId)

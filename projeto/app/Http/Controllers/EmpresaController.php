@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Saldo;
 use App\Models\Empresa;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -65,7 +66,10 @@ class EmpresaController extends Controller
     {
         $empresa = Empresa::BuscaPorId($id);
 
-        return view('empresa.show', \compact('empresa'));
+        return view('empresa.show', [
+            'empresa' => Empresa::BuscaPorId($id),
+            'saldo' => Saldo::ultimoDaEmpresa($id)
+        ]);
     }
 
     /**

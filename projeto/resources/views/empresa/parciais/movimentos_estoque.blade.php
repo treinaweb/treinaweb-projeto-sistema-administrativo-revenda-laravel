@@ -1,7 +1,11 @@
 
 <div class="col-md-12">
 <div class="card">
-    <div class="card-header">Últimos Movimentos de Estoque</div>
+    @if ($empresa->tipo === 'fornecedor')
+        <div class="card-header">Últimos itens comprados deste fornecedor:</div>
+    @else
+        <div class="card-header">Últimos itens vendidos para este cliente:</div>
+    @endif    
         <div class="card-body">                    
             <div class="table-responsive">
                 <table class="table">
