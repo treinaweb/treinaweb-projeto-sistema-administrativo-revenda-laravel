@@ -16,4 +16,17 @@ class MovimentosEstoqueObserver
             'empresa_id' => $movimentosEstoque->empresa_id
         ]);
     }
+
+    public function deleted(MovimentosEstoque $movimentosEstoque)
+    {
+        $saldo = $movimentosEstoque->saldo;
+        $valorMovimento = $movimentosEstoque->quantidade*$movimentosEstoque->valor;
+
+        Saldo::where('created_at', '>', $saldo->created_at)
+                ->update([
+                    'valor' => \DB::raw("valor - $valorMovimento")
+                ]);
+        
+        $saldo->delete();
+    }
 }
