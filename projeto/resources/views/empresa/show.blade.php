@@ -41,7 +41,9 @@
                             <strong>IE/RG</strong>: {{ $empresa->ie_rg }} <br>
                             <strong>
                                 Saldo à {{ $empresa->tipo === 'fornecedor' ? 'pagar' : 'receber' }}
-                            </strong>: R$ {{ numero_iso_para_br($saldo->valor) }} <br>
+                            </strong>: R$ {{ numero_iso_para_br($saldo->valor ?? 0) }} 
+                            <a href="#" class="btn btn-primary btn-sm">Relatório de Saldo</a>
+                            <br>
                             <strong>Observações</strong>: {{ $empresa->observacao }} <br>
                         </div>
                         <div class="col-sm-6">

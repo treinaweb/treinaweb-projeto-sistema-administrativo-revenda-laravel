@@ -19,6 +19,7 @@ class Saldo extends Model
      * @var array
      */
     protected $fillable = ['valor', 'empresa_id'];
+    
 
     /**
      * busca último saldo da empresa

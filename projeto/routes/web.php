@@ -28,10 +28,13 @@ Route::middleware('auth')->group(function() {
         'edit', 'update'
     ]);
     Route::post('/empresas/buscar-por/nome', 'Selects\EmpresaNomeTipo');
+    Route::get('/empresas/relatorio/saldo', 'Relatorios\SaldoEmpresa');
 
     Route::delete('/movimentos_estoque/{id}', 'MovimentoEstoqueController@destroy')->name('movimentos_estoque.destroy');
     Route::post('/movimentos_estoque', 'MovimentoEstoqueController@store')->name('movimentos_estoque.store');
     Route::post('/produtos/buscar-por/nome', 'Selects\ProdutoPorNome');
+
+    
 });
 
 
