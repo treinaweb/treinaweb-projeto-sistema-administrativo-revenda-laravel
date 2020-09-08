@@ -21,6 +21,14 @@ class MovimentosEstoque extends Model
     protected $fillable = ['produto_id', 'quantidade', 'valor', 'tipo', 'empresa_id'];
 
     /**
+     * Indica que o Movimento de estoque 
+     * sempre deve carregar a relação com produto
+     *
+     * @var array
+     */
+    protected $with = ['produto'];
+
+    /**
      * Define a relação com produto
      *
      * @return void
