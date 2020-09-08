@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <h1>Relatório de Saldo</h1>
+    <h1>Relatório de Saldo Empresa {{ $empresa->nome }}</h1>
 @endsection
 
 @section('breadcrumb')
@@ -63,7 +63,7 @@
                                 <tbody>
                                 @foreach($saldo as $item)
                                     <tr>
-                                       
+                                       <td>{{ data_iso_para_br($item->created_at) }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

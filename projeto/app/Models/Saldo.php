@@ -33,4 +33,19 @@ class Saldo extends Model
                     ->latest()
                     ->first();
     }
+
+    /**
+     * Busca os saldos de uma empresa por intervalo
+     *
+     * @param integer $empresa
+     * @param string $inicio
+     * @param string $fim
+     * @return void
+     */
+    public static function buscaPorIntervalo(int $empresa, string $inicio, string $fim)
+    {
+        return self::whereBetween('created_at', [$inicio, $fim])
+                        ->where('empresa_id', $empresa)
+                        ->get();
+    }
 }
