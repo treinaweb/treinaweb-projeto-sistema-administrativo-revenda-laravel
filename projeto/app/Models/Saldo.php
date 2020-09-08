@@ -19,7 +19,16 @@ class Saldo extends Model
      * @var array
      */
     protected $fillable = ['valor', 'empresa_id'];
-    
+
+    /**
+     * Define relação com movimento de estoque e financeiro
+     *
+     * @return void
+     */
+    public function movimento()
+    {
+        return $this->morphTo();
+    }
 
     /**
      * busca último saldo da empresa
@@ -44,8 +53,9 @@ class Saldo extends Model
      */
     public static function buscaPorIntervalo(int $empresa, string $inicio, string $fim)
     {
-        return self::whereBetween('created_at', [$inicio, $fim])
-                        ->where('empresa_id', $empresa)
-                        ->get();
+        return self::with('movimento')
+                    ->whereBetween('created_at', [$inicio, $fim])
+                    ->where('empresa_id', $empresa)
+                    ->get();
     }
 }

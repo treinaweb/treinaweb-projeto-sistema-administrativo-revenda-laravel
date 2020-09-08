@@ -51,19 +51,39 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Tipo</th>
-                                        <th>Empresa</th>
-                                        <th>Descricao</th>
-                                        <th>Valor</th>
                                         <th>Data</th>
-                                        <th>Ações</th>
+                                        <th>Movimento</th>
+                                        <th>Tipo</th>
+                                        <th>Produto</th>
+                                        <th>Quantidade</th>
+                                        <th>Valor Un.</th>
+                                        <th>Total</th>
+                                        <th>Saldo</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($saldo as $item)
                                     <tr>
                                        <td>{{ data_iso_para_br($item->created_at) }}</td>
+
+                                        @if ($item->movimento_type === 'App\Models\MovimentosEstoque')
+                                            <td>estoque</td>
+                                            <td>{{ $item->movimento->tipo }}</td>
+                                            <td>{{ $item->movimento->produto->nome }}</td>
+                                            <td>{{ numero_iso_para_br($item->movimento->quantidade) }}</td>
+                                            <td>R$ {{ numero_iso_para_br($item->movimento->valor) }}</td>
+                                            <td>R$ {{ numero_iso_para_br($item->movimento->quantidade * $item->movimento->valor) }}</td>
+                                            <td>R$ {{ numero_iso_para_br($item->valor) }}</td>
+                                        @else
+                                            <td>Financeiro</td>
+                                            <td>{{ $item->movimento->tipo }}</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>R$ {{ numero_iso_para_br($item->movimento->valor) }}</td>
+                                            <td>R$ {{ numero_iso_para_br($item->valor) }}</td>
+                                        @endif
+
                                     </tr>
                                 @endforeach
                                 </tbody>
