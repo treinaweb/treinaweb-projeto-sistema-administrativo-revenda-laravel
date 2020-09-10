@@ -66,8 +66,6 @@ class EmpresaController extends Controller
      */
     public function show(int $id): View
     {
-        $empresa = Empresa::BuscaPorId($id);
-
         return view('empresa.show', [
             'empresa' => Empresa::BuscaPorId($id),
             'saldo' => Saldo::ultimoDaEmpresa($id)

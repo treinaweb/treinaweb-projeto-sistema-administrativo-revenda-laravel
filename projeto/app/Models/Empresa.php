@@ -78,13 +78,21 @@ class Empresa extends Model
                         ->get();
     }
 
+    /**
+     * Busca empresa com id e suas relações
+     *
+     * @param integer $id
+     * @return void
+     */
     public static function buscaPorId(int $id)
     {
         return self::with([
                 'movimentosEstoque' => function($query) {
                     $query->latest()->take(5);
                 }, 
-                'movimentosEstoque.produto'
+                'movimentosEstoque.produto' => function($q){
+                    $q->withTrashed();
+                }
             ])
             ->findOrFail($id);
     }
